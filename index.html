@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio of Seneth Shavindu Maddumarachchi - student at Ananda College, Physical Science stream." />
+  <title>Seneth Shavindu | Portfolio</title>
+  <style>
+    :root {
+      --clr-bg:        #0d0f1a;
+      --clr-surface:   #161929;
+      --clr-card:      #1e2236;
+      --clr-border:    rgba(255,255,255,.08);
+      --clr-violet:    #8b5cf6;
+      --clr-blue:      #3b82f6;
+      --clr-cyan:      #06b6d4;
+      --clr-emerald:   #10b981;
+      --clr-amber:     #f59e0b;
+      --clr-rose:      #f43f5e;
+      --clr-text:      #e2e8f0;
+      --clr-muted:     #94a3b8;
+      --radius-lg:     1.25rem;
+      --radius-md:     .75rem;
+      --radius-sm:     .375rem;
+      --shadow-glow:   0 0 40px rgba(139,92,246,.25);
+      --transition:    .3s cubic-bezier(.4,0,.2,1);
+      --nav-h:         64px;
+      --section-pad:   clamp(4rem, 8vw, 7rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+    body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--clr-bg); color: var(--clr-text); line-height: 1.65; overflow-x: hidden; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(139,92,246,.18) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 80%, rgba(59,130,246,.15) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 50% 50%, rgba(6,182,212,.10) 0%, transparent 70%), var(--clr-bg); animation: meshShift 18s ease-in-out infinite alternate; }
+    @keyframes meshShift { 0% { opacity: 1; } 100% { opacity: .85; } }
+
+    .skip-link { position: absolute; top: -99px; left: 1rem; padding: .5rem 1rem; background: var(--clr-violet); border-radius: var(--radius-sm); font-weight: 700; z-index: 999; transition: top var(--transition); }
+    .skip-link:focus { top: .5rem; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; padding: 0 clamp(1rem, 5vw, 3rem); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); background: rgba(13,15,26,.75); border-bottom: 1px solid var(--clr-border); }
+    .nav-brand { font-size: 1.1rem; font-weight: 800; background: linear-gradient(135deg, var(--clr-violet), var(--clr-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex: 1; letter-spacing: -.02em; }
+    .nav-links { display: flex; gap: clamp(.75rem, 2vw, 1.75rem); align-items: center; }
+    .nav-links a { font-size: .875rem; font-weight: 600; color: var(--clr-muted); transition: color var(--transition); position: relative; padding-bottom: 2px; }
+    .nav-links a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--clr-violet), var(--clr-cyan)); border-radius: 2px; transition: width var(--transition); }
+    .nav-links a:hover { color: var(--clr-text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border: none; background: transparent; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--clr-muted); border-radius: 2px; transition: var(--transition); }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+      .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: rgba(13,15,26,.97); border-bottom: 1px solid var(--clr-border); padding: 1rem 1.5rem 1.5rem; transform: translateY(-110%); transition: transform var(--transition); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a { padding: .6rem 0; font-size: 1rem; width: 100%; border-bottom: 1px solid var(--clr-border); }
+      .nav-links a:last-child { border-bottom: none; }
+    }
+
+    section { padding: var(--section-pad) clamp(1rem, 7vw, 6rem); max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--clr-violet); margin-bottom: .5rem; }
+    .section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -.03em; margin-bottom: 1rem; }
+    .section-desc { color: var(--clr-muted); max-width: 56ch; font-size: 1.0625rem; margin-bottom: 2.5rem; }
+
+    #hero { min-height: 100svh; display: flex; align-items: center; padding-top: calc(var(--nav-h) + 2rem); max-width: 1100px; margin: 0 auto; padding-left: clamp(1rem, 7vw, 6rem); padding-right: clamp(1rem, 7vw, 6rem); }
+    .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; width: 100%; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--clr-cyan); margin-bottom: 1rem; }
+    .hero-eyebrow::before { content: ""; display: block; width: 28px; height: 2px; background: var(--clr-cyan); border-radius: 2px; }
+    .hero-name { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; line-height: 1.05; letter-spacing: -.04em; background: linear-gradient(135deg, #fff 20%, var(--clr-violet) 60%, var(--clr-cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: .75rem; }
+    .hero-tagline { font-size: clamp(1rem, 2.5vw, 1.3125rem); color: var(--clr-muted); max-width: 50ch; margin-bottom: 2rem; line-height: 1.6; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
+    .badge { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .9rem; border-radius: 999px; font-size: .8125rem; font-weight: 600; border: 1px solid; }
+    .badge-violet { color: var(--clr-violet); border-color: rgba(139,92,246,.4); background: rgba(139,92,246,.1); }
+    .badge-cyan   { color: var(--clr-cyan);   border-color: rgba(6,182,212,.4);   background: rgba(6,182,212,.1);   }
+    .badge-emerald{ color: var(--clr-emerald); border-color: rgba(16,185,129,.4);  background: rgba(16,185,129,.1);  }
+    .badge-amber  { color: var(--clr-amber);   border-color: rgba(245,158,11,.4);  background: rgba(245,158,11,.1);  }
+
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.75rem; border-radius: var(--radius-md); font-weight: 700; font-size: .9375rem; background: linear-gradient(135deg, var(--clr-violet), var(--clr-blue)); color: #fff; box-shadow: 0 4px 20px rgba(139,92,246,.4); transition: transform var(--transition), box-shadow var(--transition); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139,92,246,.6); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.75rem; border-radius: var(--radius-md); font-weight: 700; font-size: .9375rem; border: 1px solid var(--clr-border); color: var(--clr-muted); transition: border-color var(--transition), color var(--transition), transform var(--transition); }
+    .btn-ghost:hover { border-color: var(--clr-violet); color: var(--clr-text); transform: translateY(-2px); }
+
+    .hero-avatar { position: relative; flex-shrink: 0; }
+    .avatar-ring { width: clamp(160px, 20vw, 220px); aspect-ratio: 1; border-radius: 50%; background: conic-gradient(from 180deg, var(--clr-violet), var(--clr-cyan), var(--clr-emerald), var(--clr-violet)); padding: 3px; animation: spin 8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar-inner { width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--clr-bg); display: grid; place-items: center; font-size: clamp(4rem, 8vw, 6.5rem); }
+
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .hero-inner > div:first-child { order: 2; }
+      .hero-avatar { order: 1; }
+      .hero-badges, .hero-cta { justify-content: center; }
+      .hero-eyebrow { justify-content: center; }
+    }
+
+    .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .4rem; color: var(--clr-muted); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--clr-border), transparent); max-width: 1100px; margin: 0 auto; }
+
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.25rem; }
+    .info-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition); }
+    .info-card:hover { transform: translateY(-3px); border-color: rgba(139,92,246,.4); box-shadow: 0 8px 30px rgba(0,0,0,.3), 0 0 0 1px rgba(139,92,246,.2); }
+    .info-icon { font-size: 1.75rem; flex-shrink: 0; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: var(--radius-md); background: rgba(139,92,246,.12); }
+    .info-card h3 { font-size: .8125rem; font-weight: 700; color: var(--clr-muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
+    .info-card p  { font-size: .9375rem; font-weight: 500; }
+
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ""; position: absolute; left: 0; top: .5rem; bottom: .5rem; width: 2px; background: linear-gradient(to bottom, var(--clr-violet), var(--clr-cyan), transparent); border-radius: 2px; }
+    .timeline-item { position: relative; padding: 1.5rem 1.75rem; background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); margin-bottom: 1.25rem; transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition); }
+    .timeline-item::before { content: ""; position: absolute; left: -2.5rem; top: 1.75rem; width: 12px; height: 12px; border-radius: 50%; background: var(--clr-violet); box-shadow: 0 0 0 4px rgba(139,92,246,.25); }
+    .timeline-item:hover { transform: translateX(4px); border-color: rgba(139,92,246,.4); box-shadow: var(--shadow-glow); }
+    .timeline-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: .6rem; }
+    .timeline-year { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 999px; background: rgba(139,92,246,.15); color: var(--clr-violet); }
+    .timeline-item h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: .3rem; }
+    .timeline-item .inst { color: var(--clr-cyan); font-weight: 600; font-size: .9375rem; margin-bottom: .5rem; }
+    .timeline-item p  { color: var(--clr-muted); font-size: .9375rem; }
+
+    .achievement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.25rem; }
+    .achievement-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 1.75rem; text-align: center; transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition); position: relative; overflow: hidden; }
+    .achievement-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(139,92,246,.07), transparent 60%); pointer-events: none; }
+    .achievement-card:hover { transform: translateY(-4px); border-color: rgba(16,185,129,.4); box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(16,185,129,.2); }
+    .achievement-num { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 900; letter-spacing: -.04em; background: linear-gradient(135deg, var(--clr-emerald), var(--clr-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1; margin-bottom: .5rem; }
+    .achievement-label { font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
+    .achievement-sub   { font-size: .875rem; color: var(--clr-muted); }
+
+    .interests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1.25rem; }
+    .interest-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+    .interest-card:hover { transform: translateY(-4px); box-shadow: 0 10px 35px rgba(0,0,0,.3); }
+    .interest-icon { font-size: 2.75rem; margin-bottom: 1rem; display: block; }
+    .interest-card h3 { font-size: 1.0625rem; font-weight: 700; margin-bottom: .4rem; }
+    .interest-card p  { font-size: .875rem; color: var(--clr-muted); }
+    .interest-card:nth-child(1) { border-top: 3px solid var(--clr-violet); }
+    .interest-card:nth-child(1):hover { border-color: var(--clr-violet); box-shadow: 0 10px 35px rgba(139,92,246,.2); }
+    .interest-card:nth-child(2) { border-top: 3px solid var(--clr-amber); }
+    .interest-card:nth-child(2):hover { border-color: var(--clr-amber); box-shadow: 0 10px 35px rgba(245,158,11,.2); }
+    .interest-card:nth-child(3) { border-top: 3px solid var(--clr-cyan); }
+    .interest-card:nth-child(3):hover { border-color: var(--clr-cyan); box-shadow: 0 10px 35px rgba(6,182,212,.2); }
+    .interest-card:nth-child(4) { border-top: 3px solid var(--clr-rose); }
+    .interest-card:nth-child(4):hover { border-color: var(--clr-rose); box-shadow: 0 10px 35px rgba(244,63,94,.2); }
+
+    #contact { padding-bottom: calc(var(--section-pad) * 1.5); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.25rem; }
+    .contact-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; align-items: center; gap: 1.1rem; transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition); text-decoration: none; }
+    .contact-card:hover { transform: translateY(-3px); }
+    .contact-card.phone:hover   { border-color: rgba(16,185,129,.5); box-shadow: 0 8px 30px rgba(16,185,129,.15); }
+    .contact-card.insta:hover   { border-color: rgba(244,63,94,.5);  box-shadow: 0 8px 30px rgba(244,63,94,.15); }
+    .contact-card.address:hover { border-color: rgba(59,130,246,.5); box-shadow: 0 8px 30px rgba(59,130,246,.15); }
+    .contact-icon-wrap { width: 3rem; height: 3rem; border-radius: var(--radius-md); display: grid; place-items: center; font-size: 1.375rem; flex-shrink: 0; }
+    .phone   .contact-icon-wrap { background: rgba(16,185,129,.12); }
+    .insta   .contact-icon-wrap { background: rgba(244,63,94,.12); }
+    .address .contact-icon-wrap { background: rgba(59,130,246,.12); }
+    .contact-label { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--clr-muted); margin-bottom: .2rem; }
+    .contact-value { font-size: .9375rem; font-weight: 600; }
+    .contact-card.address { grid-column: 1 / -1; }
+
+    footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--clr-border); color: var(--clr-muted); font-size: .875rem; }
+    footer .grad { background: linear-gradient(90deg, var(--clr-violet), var(--clr-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav aria-label="Main navigation">
+    <span class="nav-brand">Seneth Shavindu</span>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-inner">
+        <div>
+          <span class="hero-eyebrow">Student Portfolio</span>
+          <h1 class="hero-name">Seneth<br>Shavindu</h1>
+          <p class="hero-tagline">
+            A passionate 17-year-old student at <strong>Ananda College</strong>, exploring the
+            wonders of Physics, Chemistry, and Mathematics &mdash; and playing guitar in between.
+          </p>
+          <div class="hero-badges">
+            <span class="badge badge-violet">&#127979; Ananda College</span>
+            <span class="badge badge-cyan">&#9883; Physical Science</span>
+            <span class="badge badge-emerald">&#11088; 9 A&apos;s &ndash; O/L</span>
+            <span class="badge badge-amber">&#127928; Guitarist</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn-primary" href="#contact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.21 3.4 2 2 0 0 1 3.22 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+              Get in Touch
+            </a>
+            <a class="btn-ghost" href="#education">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              My Education
+            </a>
+          </div>
+        </div>
+        <div class="hero-avatar" aria-hidden="true">
+          <div class="avatar-ring">
+            <div class="avatar-inner">&#127891;</div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Scroll
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="about" aria-labelledby="about-title">
+      <p class="section-label fade-in">Who I am</p>
+      <h2 class="section-title fade-in" id="about-title">A Little About Me</h2>
+      <p class="section-desc fade-in">I&apos;m Seneth Shavindu Maddumarachchi &mdash; a curious, driven student who loves science and finds joy in both equations and music. Here&apos;s a quick look at who I am.</p>
+      <div class="about-grid">
+        <div class="info-card fade-in"><div class="info-icon">&#129489;</div><div><h3>Name</h3><p>Seneth Shavindu Maddumarachchi</p></div></div>
+        <div class="info-card fade-in"><div class="info-icon">&#127874;</div><div><h3>Age</h3><p>17 Years Old</p></div></div>
+        <div class="info-card fade-in"><div class="info-icon">&#127979;</div><div><h3>School</h3><p>Ananda College, Colombo</p></div></div>
+        <div class="info-card fade-in"><div class="info-icon">&#9883;</div><div><h3>Stream</h3><p>Physical Science (G.C.E. A/L)</p></div></div>
+        <div class="info-card fade-in"><div class="info-icon">&#128205;</div><div><h3>Location</h3><p>Enderamulla, Wattala</p></div></div>
+        <div class="info-card fade-in"><div class="info-icon">&#127928;</div><div><h3>Hobby</h3><p>Playing Guitar</p></div></div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="education" aria-labelledby="education-title">
+      <p class="section-label fade-in">Academic Journey</p>
+      <h2 class="section-title fade-in" id="education-title">Education</h2>
+      <p class="section-desc fade-in">A determined student committed to academic excellence, building a strong foundation in the sciences at one of Sri Lanka&apos;s most prestigious schools.</p>
+      <div class="timeline">
+        <article class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-year">Present</span>
+            <span class="badge badge-violet">G.C.E. Advanced Level</span>
+          </div>
+          <h3>Physical Science Stream</h3>
+          <p class="inst">Ananda College, Colombo</p>
+          <p>Currently pursuing the G.C.E. Advanced Level examinations in the Physical Science stream. Subjects include <strong>Physics</strong>, <strong>Chemistry</strong>, and <strong>Combined Mathematics</strong> &mdash; building a rigorous analytical skill set for higher education in STEM.</p>
+        </article>
+        <article class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-year">Completed</span>
+            <span class="badge badge-emerald">G.C.E. Ordinary Level</span>
+          </div>
+          <h3>G.C.E. Ordinary Level Examinations</h3>
+          <p class="inst">Ananda College, Colombo</p>
+          <p>Achieved an outstanding result of <strong>9 A passes</strong> in the G.C.E. Ordinary Level examinations &mdash; a testament to consistent hard work, focus, and academic dedication across all subjects.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="achievements" aria-labelledby="achievements-title">
+      <p class="section-label fade-in">What I&apos;ve accomplished</p>
+      <h2 class="section-title fade-in" id="achievements-title">Achievements</h2>
+      <p class="section-desc fade-in">Proud milestones from my academic journey so far &mdash; with more to come.</p>
+      <div class="achievement-grid">
+        <div class="achievement-card fade-in">
+          <span class="achievement-num">9A</span>
+          <p class="achievement-label">G.C.E. O/L Results</p>
+          <p class="achievement-sub">9 A passes across all subjects in the Ordinary Level examinations</p>
+        </div>
+        <div class="achievement-card fade-in">
+          <span class="achievement-num" style="background:linear-gradient(135deg,var(--clr-violet),var(--clr-blue));-webkit-background-clip:text;background-clip:text;">A/L</span>
+          <p class="achievement-label">Advanced Level &mdash; Physical Science</p>
+          <p class="achievement-sub">Enrolled in the prestigious Physical Science stream at Ananda College</p>
+        </div>
+        <div class="achievement-card fade-in">
+          <span class="achievement-num" style="background:linear-gradient(135deg,var(--clr-amber),var(--clr-rose));-webkit-background-clip:text;background-clip:text;">&#127928;</span>
+          <p class="achievement-label">Musical Journey</p>
+          <p class="achievement-sub">Self-driven guitarist &mdash; balancing academics with a love for music</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="interests" aria-labelledby="interests-title">
+      <p class="section-label fade-in">What drives me</p>
+      <h2 class="section-title fade-in" id="interests-title">Interests &amp; Passions</h2>
+      <p class="section-desc fade-in">Beyond textbooks, these are the things that spark my curiosity and keep me inspired.</p>
+      <div class="interests-grid">
+        <div class="interest-card fade-in"><span class="interest-icon">&#9883;</span><h3>Physics</h3><p>Fascinated by the fundamental laws that govern the universe &mdash; from mechanics to electromagnetism.</p></div>
+        <div class="interest-card fade-in"><span class="interest-icon">&#127928;</span><h3>Guitar</h3><p>Music is my creative outlet. Strumming chords and learning new songs brings balance to study life.</p></div>
+        <div class="interest-card fade-in"><span class="interest-icon">&#129518;</span><h3>Mathematics</h3><p>Passionate about problem-solving and the elegant logic that makes maths a beautiful language.</p></div>
+        <div class="interest-card fade-in"><span class="interest-icon">&#129514;</span><h3>Chemistry</h3><p>Curious about the molecular world &mdash; how matter transforms and interacts at every level.</p></div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <p class="section-label fade-in">Reach me</p>
+      <h2 class="section-title fade-in" id="contact-title">Contact</h2>
+      <p class="section-desc fade-in">Feel free to reach out &mdash; whether it&apos;s a friendly hello or a collaboration idea!</p>
+      <div class="contact-grid">
+        <a class="contact-card phone fade-in" href="tel:+94777190891">
+          <div class="contact-icon-wrap">&#128222;</div>
+          <div><p class="contact-label">Phone</p><p class="contact-value">0777 190 891</p></div>
+        </a>
+        <a class="contact-card insta fade-in" href="https://www.instagram.com/senethshavindu" target="_blank" rel="noopener noreferrer">
+          <div class="contact-icon-wrap">&#128248;</div>
+          <div><p class="contact-label">Instagram</p><p class="contact-value">@senethshavindu</p></div>
+        </a>
+        <div class="contact-card address fade-in">
+          <div class="contact-icon-wrap">&#128205;</div>
+          <div><p class="contact-label">Address</p><p class="contact-value">15/1/B/3, 6th Lane, St. Jude Road, Enderamulla, Wattala</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Crafted with &#10084;&#65039; by <span class="grad">Seneth Shavindu Maddumarachchi</span> &middot; <span id="yr"></span> &middot; Ananda College</p>
+  </footer>
+
+  <script>
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    const hamburger = document.getElementById("hamburger");
+    const navLinks  = document.getElementById("nav-links");
+    hamburger.addEventListener("click", () => {
+      const expanded = hamburger.getAttribute("aria-expanded") === "true";
+      hamburger.setAttribute("aria-expanded", String(!expanded));
+      navLinks.classList.toggle("open", !expanded);
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.setAttribute("aria-expanded", "false");
+        navLinks.classList.remove("open");
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); observer.unobserve(e.target); } }); },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
